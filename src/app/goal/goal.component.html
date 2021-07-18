@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-6">
+    <div *ngFor='let goal of goals;let i = index'>
+      <div class="card">
+    <li appStrikethrough>{{goal.name}}</li>
+    <p id='p' appstrikethrough>{{goal.name}} due in {{goal.completeDate|dateCount}} days</p>
+    <app-goal-detail *ngIf='goal.showDescription' [goal]='goal' (isDelete) = 'deleteGoal($event,i)'></app-goal-detail><br>
+   
+    
+    <button class="btn btn-primary" id="btn" (click)='toggleDetails(i)'>Toggle Details</button>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+  <div class="card" id="card-2">
+  
+    <app-goal-form (addGoal)="addNewGoal($event)"></app-goal-form>
+</div>
+</div>
